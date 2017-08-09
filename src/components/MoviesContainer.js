@@ -3,25 +3,35 @@ import MovieCard from "./MovieCard";
 import axios from "axios";
 
 
-class MoviesContainer extends Component{
+class MoviesContainer extends Component {
     constructor(props){
         super(props);
+        this.state = {
+          "movies": []
+        }
     }
-    componentDidMount(){
+
+    componentWillMount(){
       // get the movies from our api
       const url = "https://kenyamax2.herokuapp.com/movies/popular";
-      axios.get(url)
-      .then(function (response) {
-          console.log("response", response);
+      const _this = this;
+
+      fetch(url)
+      .then((resp) => resp.json()) // Transform the data into json
+      .then(function(data) {
+        // Create and append the li's to the ul
+          _this.setState({
+              "movies": data.Movies
+          })
+      }).catch((err) =>{
+          console.error(err)
       })
-      .catch(function (error) {
-          console.log("error",error);
-      });
     }
     render(){
       return(
         <div>
-            <p>This is a test</p>
+            <p>This is are the movies</p>
+            <MovieCard movies={this.state.movies}/>
         </div>
       )
     }

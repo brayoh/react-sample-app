@@ -13,7 +13,7 @@ class App extends Component {
           </div>
           <div>
               <h2>Movies List</h2>
-              <MoviesContainer />
+                <MoviesContainer />
           </div>
       </div>
     );

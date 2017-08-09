@@ -22,3 +22,11 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.movie-card{
+  position: relative;
+  width: 25%;
+  float: left;
+  display: inline-flex;
+  padding: 4%;
+}
